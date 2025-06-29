@@ -1,10 +1,10 @@
 services:
   - type: web
     name: hot-shark-bot
-    env: python
+    runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: TELEGRAM_BOT_TOKEN
         sync: false
@@ -19,6 +19,5 @@ services:
       - key: ENVIRONMENT
         value: production
       - key: PORT
-        value: 10000
+        value: 8000
     autoDeploy: false
-
