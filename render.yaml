@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: hot-shark-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_USER_ID
+        sync: false
+      - key: SECRET_KEY
+        value: your_secret_key_here
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: 10000
+    autoDeploy: false
+
